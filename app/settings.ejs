@@ -2,21 +2,21 @@
     <div id="settingsContainerLeft">
         <div id="settingsNavContainer">
             <div id="settingsNavHeader">
-                <span id="settingsNavHeaderText">Settings</span>
+                <span id="settingsNavHeaderText">設定</span>
             </div>
             <div id="settingsNavItemsContainer">
                 <div id="settingsNavItemsContent">
-                    <button class="settingsNavItem" rSc="settingsTabAccount" id="settingsNavAccount" selected>Account</button>
+                    <button class="settingsNavItem" rSc="settingsTabAccount" id="settingsNavAccount" selected>アカウント</button>
                     <button class="settingsNavItem" rSc="settingsTabMinecraft">Minecraft</button>
-                    <button class="settingsNavItem" rSc="settingsTabMods">Mods</button>
-                    <button class="settingsNavItem" rSc="settingsTabJava">Java</button>
-                    <button class="settingsNavItem" rSc="settingsTabLauncher">Launcher</button>
+                    <button class="settingsNavItem" rSc="settingsTabMods">MOD</button>
+                    <button class="settingsNavItem" rSc="settingsTabJava">Javaの設定</button>
+                    <button class="settingsNavItem" rSc="settingsTabLauncher">ランチャー</button>
                     <div class="settingsNavSpacer"></div>
                     <button class="settingsNavItem" rSc="settingsTabAbout">About</button>
-                    <button class="settingsNavItem" rSc="settingsTabUpdate" id="settingsNavUpdate">Updates</button>
+                    <button class="settingsNavItem" rSc="settingsTabUpdate" id="settingsNavUpdate">アップデート</button>
                     <div id="settingsNavContentBottom">
                         <div class="settingsNavDivider"></div>
-                        <button id="settingsNavDone">Done</button>
+                        <button id="settingsNavDone">完了</button>
                     </div>
                 </div>
             </div>
@@ -25,16 +25,16 @@
     <div id="settingsContainerRight">
         <div id="settingsTabAccount" class="settingsTab">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Account Settings</span>
-                <span class="settingsTabHeaderDesc">Add new accounts or manage existing ones.</span>
+                <span class="settingsTabHeaderText">アカウントの設定</span>
+                <span class="settingsTabHeaderDesc">新規アカウントの追加、既存アカウントの編集</span>
             </div>
             <div id="settingsAddAccountContainer">
                 <button id="settingsAddAccount">
-                    <span id="settingsAddAccountText">&#43; Add Account</span>
+                    <span id="settingsAddAccountText">&#43; アカウントの追加</span>
                 </button>
             </div>
             <div id="settingsCurrentAccountsHeader">
-                <span class="settingsFieldTitle">Current Accounts</span>
+                <span class="settingsFieldTitle">現在のアカウント</span>
             </div>
             <div id="settingsCurrentAccounts">
                 <!-- Auth accounts populated here. -->
@@ -42,8 +42,8 @@
         </div>
         <div id="settingsTabMinecraft" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Minecraft Settings</span>
-                <span class="settingsTabHeaderDesc">Options related to game launch.</span>
+                <span class="settingsTabHeaderText">マイクラの設定</span>
+                <span class="settingsTabHeaderDesc">ゲーム起動に関するオプション</span>
             </div>
             <div id="settingsGameResolutionContainer">
                 <span class="settingsFieldTitle">Game Resolution</span>
@@ -55,7 +55,7 @@
             </div>
             <div class="settingsFieldContainer">
                 <div class="settingsFieldLeft">
-                    <span class="settingsFieldTitle">Launch in fullscreen.</span>
+                    <span class="settingsFieldTitle">フルスクリーン起動</span>
                 </div>
                 <div class="settingsFieldRight">
                     <label class="toggleSwitch">
@@ -66,7 +66,7 @@
             </div>
             <div class="settingsFieldContainer">
                 <div class="settingsFieldLeft">
-                    <span class="settingsFieldTitle">Automatically connect to the server on launch.</span>
+                    <span class="settingsFieldTitle">サーバーへの自動接続</span>
                 </div>
                 <div class="settingsFieldRight">
                     <label class="toggleSwitch">
@@ -90,7 +90,7 @@
         </div>
         <div id="settingsTabMods" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Mod Settings</span>
+                <span class="settingsTabHeaderText">MODの設定</span>
                 <span class="settingsTabHeaderDesc">Enable or disable mods.</span>
             </div>
             <div id="settingsSelServContainer">
@@ -99,26 +99,29 @@
                 </div>
                 <div id="settingsSwitchServerContainer">
                     <div id="settingsSwitchServerContent">
-                        <button id="settingsSwitchServerButton">Switch</button>
+                        <button id="settingsSwitchServerButton">選択</button>
                     </div>
                 </div>
             </div>
             <div id="settingsModsContainer">
                 <div id="settingsReqModsContainer">
-                    <div class="settingsModsHeader">Required Mods</div>
+                    <div class="settingsModsHeader">必須MOD</div>
                     <div id="settingsReqModsContent">
 
                     </div>
                 </div>
                 <div id="settingsOptModsContainer">
-                    <div class="settingsModsHeader">Optional Mods</div>
+                    <div class="settingsModsHeader">オプションMOD</div>
                     <div id="settingsOptModsContent">
                         
                     </div>
                 </div>
+                <!--
+                    
+                -->
                 <div id="settingsDropinModsContainer">
-                    <div class="settingsModsHeader">Drop-in Mods</div>
-                    <button id="settingsDropinFileSystemButton">+ Add Mods <span id="settingsDropinRefreshNote">(F5 to Refresh)</span></button>
+                    <div class="settingsModsHeader">追加MODの導入(許可のないMODの導入は検出され、永久BANされます。)</div>
+                    <button id="settingsDropinFileSystemButton">+ 追加(指定がない場合は追加しないでください)<span id="settingsDropinRefreshNote">(F5 to Refresh)</span></button>
                     <div id="settingsDropinModsContent">
                         
                     </div>
@@ -140,17 +143,17 @@
         </div>
         <div id="settingsTabJava" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Java Settings</span>
+                <span class="settingsTabHeaderText">Javaの設定</span>
                 <span class="settingsTabHeaderDesc">Manage the Java configuration (advanced).</span>
             </div>
             <div id="settingsMemoryContainer">
-                <div id="settingsMemoryTitle">Memory</div>
+                <div id="settingsMemoryTitle">メモリ</div>
                 <div id="settingsMemoryContent">
                     <div id="settingsMemoryContentLeft">
                         <div class="settingsMemoryContentItem">
-                            <span class="settingsMemoryHeader">Maximum RAM</span>
+                            <span class="settingsMemoryHeader">最大RAM</span>
                             <div class="settingsMemoryActionContainer">
-                                <div id="settingsMaxRAMRange" class="rangeSlider" cValue="MaxRAM" min="3" max="8" value="3" step="0.5">
+                                <div id="settingsMaxRAMRange" class="rangeSlider" cValue="MaxRAM" min="2" max="8" value="3" step="0.5">
                                     <div class="rangeSliderBar"></div>
                                     <div class="rangeSliderTrack"></div>
                                 </div>
@@ -158,9 +161,9 @@
                             </div>
                         </div>
                         <div class="settingsMemoryContentItem">
-                            <span class="settingsMemoryHeader">Minimum RAM</span>
+                            <span class="settingsMemoryHeader">最小RAM</span>
                             <div class="settingsMemoryActionContainer">
-                                <div id="settingsMinRAMRange" class="rangeSlider" cValue="MinRAM" min="3" max="8" value="3" step="0.5">
+                                <div id="settingsMinRAMRange" class="rangeSlider" cValue="MinRAM" min="2" max="8" value="3" step="0.5">
                                     <div class="rangeSliderBar"></div>
                                     <div class="rangeSliderTrack"></div>
                                 </div>
@@ -172,11 +175,11 @@
                     <div id="settingsMemoryContentRight">
                         <div id="settingsMemoryStatus">
                             <div class="settingsMemoryStatusContainer">
-                                <span class="settingsMemoryStatusTitle">Total</span>
+                                <span class="settingsMemoryStatusTitle">PCの全体メモリ</span>
                                 <span id="settingsMemoryTotal" class="settingsMemoryStatusValue">16G</span>
                             </div>
                             <div class="settingsMemoryStatusContainer">
-                                <span class="settingsMemoryStatusTitle">Available</span>
+                                <span class="settingsMemoryStatusTitle">使用可能</span>
                                 <span id="settingsMemoryAvail" class="settingsMemoryStatusValue">7.3G</span>
                             </div>
                         </div>
@@ -247,9 +250,10 @@
                     </label>
                 </div>
             </div>
-            <div class="settingsFileSelContainer">
+            <!--
+                <div class="settingsFileSelContainer">
                 <div class="settingsFileSelContent">
-                    <div class="settingsFieldTitle" id="settingsDataDirTitle">Data Directory</div>
+                        <div class="settingsFieldTitle" id="settingsDataDirTitle">Data Directory</div>
                     <div class="settingsFileSelActions">
                         <div class="settingsFileSelIcon">
                             <svg class="settingsFileSelSVG">
@@ -266,10 +270,12 @@
                 </div>
                 <div class="settingsFileSelDesc">All game files and local Java installations will be stored in the data directory.<br>Screenshots and world saves are stored in the instance folder for the corresponding server configuration.</div>
             </div>
+            -->
+            
         </div>
         <div id="settingsTabAbout" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">About</span>
+                <span class="settingsTabHeaderText">情報</span>
                 <span class="settingsTabHeaderDesc">View information and release notes for the current version.</span>
             </div>
             <div id="settingsAboutCurrentContainer">
@@ -314,7 +320,7 @@
         </div>
         <div id="settingsTabUpdate" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Launcher Updates</span>
+                <span class="settingsTabHeaderText">ランチャーのアップデート</span>
                 <span class="settingsTabHeaderDesc">Download, install, and review updates for the launcher.</span>
             </div>
             <div id="settingsUpdateStatusContainer">

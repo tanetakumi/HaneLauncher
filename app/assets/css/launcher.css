@@ -45,8 +45,8 @@ body, button {
     font-family: 'Avenir Book';
     color: white;
 }
-
-/*body {
+/*
+body {
     background: url('./../images/backgrounds/0.jpg') no-repeat center center fixed;
     background-size: cover;
 }*/
@@ -689,6 +689,7 @@ body, button {
     width: 16px;
     height: 16px;
 }
+
 .load-complete {
     animation: none;
     border-color: #ffffff;
@@ -2903,8 +2904,9 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Settings icon colors. */
 #settingsSVG {
-    stroke: #ffffff;
-    height: 15px;
+    stroke: #e5ff52;
+    /*height: 30px;*/
+    height: 30px;
 }
 .mediaButton:hover #settingsSVG,
 .mediaButton:focus #settingsSVG,
@@ -2967,13 +2969,18 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Youtube icon colors. */
 #youtubeSVG:hover,
-#youtubeURL:focus #youtubeSVG {
+#youtubeURL:focus #youtubeSVG,
+#youtubeSVG2:hover,
+#youtubeURL:focus #youtubeSVG2,
+#youtubeSVG3:hover,
+#youtubeURL:focus #youtubeSVG3 {
     fill: #f00;
 }
-#youtubeSVG:active {
+#youtubeSVG:active,
+#youtubeSVG2:active,
+#youtubeSVG3:active {
     fill: #ea0202;
 }
-
 /* Discord icon colors. */
 #discordSVG:hover,
 #discordURL:focus #discordSVG {
@@ -3001,7 +3008,7 @@ input:checked + .toggleSwitchSlider:before {
 .bot_divider {
     height: 25px;
     width: 2px;
-    background: rgba(107, 105, 105, 0.7);
+    background: rgba(202, 204, 63, 0.7);
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -3013,15 +3020,16 @@ input:checked + .toggleSwitchSlider:before {
 /* Maintains maximum width on the status bar. */
 #server_status_wrapper {
     display: inline-flex;
-    width: 75px;
+    width: 100px;
+    /*width: 75px;*/
 }
 
 /* Span which displays the player count of the selected server. */
 #player_count {
-    color: #949494;
-    font-size: 8px;
+    color: #00e1ff;
+    font-size: 12px;
     font-weight: 900;
-    text-shadow: 0px 0px 20px #949494;
+    text-shadow: 0px 0px 20px #000000;
     margin-left: 10px;
 }
 
@@ -3101,7 +3109,7 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Non essential service title text. */
 #mojangStatusNETitle {
-    font-size: 10px;
+    font-size: 12px;
     padding: 0px 3px;
     text-align: center;
     letter-spacing: 1px;
@@ -3115,7 +3123,7 @@ input:checked + .toggleSwitchSlider:before {
 /* Displays the name of the mojang service. */
 .mojangStatusName {
     width: 100%;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 1px;
     line-height: 12px;
     padding: 6px 0px;
@@ -3210,8 +3218,9 @@ input:checked + .toggleSwitchSlider:before {
     cursor: pointer;
     font-weight: 900;
     letter-spacing: 2px;
-    text-shadow: 0px 0px 0px #bebcbb;
+    text-shadow: 0px 0px 0px #ffffff;
     font-size: 20px;
+    color: #fd7f45;
     padding: 0px;
     transition: 0.25s ease;
     outline: none;
@@ -3221,11 +3230,11 @@ input:checked + .toggleSwitchSlider:before {
     text-shadow: 0px 0px 20px #fff, 0px 0px 20px #fff;
 }
 #launch_button:active {
-    color: #c7c7c7;
+    color: #fd7f45;
     text-shadow: 0px 0px 20px #c7c7c7, 0px 0px 20px #c7c7c7;
 }
 #launch_button:disabled {
-    color: #c7c7c7;
+    color: #ff631b;
     cursor: default;
     pointer-events: none;
 }

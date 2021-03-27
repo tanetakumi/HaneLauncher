@@ -16,6 +16,7 @@ exports.getStatus = function(address, port = 25565){
     if(typeof port === 'string'){
         port = parseInt(port)
     }
+    address = 'hane.server-on.net'
 
     return new Promise((resolve, reject) => {
         const socket = net.connect(port, address, () => {
