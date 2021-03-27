@@ -1085,21 +1085,25 @@ function displayArticle(articleObject, index){
  * Load news information from the RSS feed specified in the
  * distribution index.
  */
-function loadNews(){
+ function loadNews(){
     return new Promise((resolve, reject) => {
         const distroData = DistroManager.getDistribution()
         const newsFeed = distroData.getRSS()
         const newsHost = new URL(newsFeed).origin + '/'
+
         $.ajax({
+            //url: newsFeed,
             url: newsFeed,
+            cache: false,
+            dataType: "xml",
             success: (data) => {
+                
                 const items = $(data).find('item')
                 const articles = []
-
+            
                 for(let i=0; i<items.length; i++){
                 // JQuery Element
                     const el = $(items[i])
-
                     // Resolve date.
                     const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
 
@@ -1108,6 +1112,7 @@ function loadNews(){
                     comments = comments + ' Comment' + (comments === '1' ? '' : 's')
 
                     // Fix relative links in content.
+                
                     let content = el.find('content\\:encoded').text()
                     let regex = /src="(?!http:\/\/|https:\/\/)(.+?)"/g
                     let matches
@@ -1144,3 +1149,69 @@ function loadNews(){
         })
     })
 }
+
+
+
+/*
+function loadNews(){
+    return new Promise((resolve, reject) => {
+        const distroData = DistroManager.getDistribution()
+        const newsFeed = distroData.getRSS()
+        const newsHost = new URL(newsFeed).origin + '/'
+        $.ajax({
+            url: newsFeed,
+            success: (data) => {
+                const items = $(data).find('item')
+                const articles = []
+
+                for(let i=0; i<items.length; i++){
+                    //console.log("Hello"+items[i].innerHTML());
+                // JQuery Element
+                    const el = $(items[i])
+                    console.log("come"+el.text());
+                    // Resolve date.
+                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+
+                    // Resolve comments.
+                    let comments = el.find('slash\\:comments').text() || '0'
+                    comments = comments + ' Comment' + (comments === '1' ? '' : 's')
+
+                    // Fix relative links in content.
+                
+                    let content = el.find('content\\:encoded').text()
+                    console.log("er"+content);
+                    let regex = /src="(?!http:\/\/|https:\/\/)(.+?)"/g
+                    let matches
+                    while((matches = regex.exec(content))){
+                        content = content.replace(`"${matches[1]}"`, `"${newsHost + matches[1]}"`)
+                    }
+
+                    let link   = el.find('link').text()
+                    let title  = el.find('title').text()
+                    let author = el.find('dc\\:creator').text()
+
+                    // Generate article.
+                    articles.push(
+                        {
+                            link,
+                            title,
+                            date,
+                            author,
+                            content,
+                            comments,
+                            commentsLink: link + '#comments'
+                        }
+                    )
+                }
+                resolve({
+                    articles
+                })
+            },
+            timeout: 2500
+        }).catch(err => {
+            resolve({
+                articles: null
+            })
+        })
+    })
+}*/
