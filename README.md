@@ -1,3 +1,7 @@
+
+
+<p align="center"><img src="./app/assets/images/SealCircle.png" width="150px" height="150px" alt="aventium softworks"></p>
+
 <h1 align="center">はね鯖ランチャー</h1>
 
 <p align="center">作者:Daniel Scalzi様の下記のライセンスに基づきforkして作成します。</p>
@@ -18,7 +22,7 @@ We reserve the right to update these conditions at any time, please check back p
 ---
 以下は Daniel Scalzi 様作成の Helios Launcher の README.md です
 
-<p align="center"><img src="./app/assets/images/SealCircle.png" width="150px" height="150px" alt="aventium softworks"></p>
+
 
 <h1 align="center">Helios Launcher</h1>
 
