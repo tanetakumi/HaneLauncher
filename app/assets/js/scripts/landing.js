@@ -1092,7 +1092,6 @@ function displayArticle(articleObject, index){
         const newsHost = new URL(newsFeed).origin + '/'
 
         $.ajax({
-            //url: newsFeed,
             url: newsFeed,
             cache: false,
             dataType: "xml",
