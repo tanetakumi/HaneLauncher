@@ -19,8 +19,8 @@ builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
         appId: 'hanelauncher',
-        productName: 'HaneServer',
-        artifactName: '${productName}-setup-${version}.${ext}',
+        productName: 'はね鯖',
+        artifactName: 'haneserver-setup-${version}.${ext}',
         copyright: 'Copyright © 2018-2020 Daniel Scalzi',
         directories: {
             buildResources: 'build',
