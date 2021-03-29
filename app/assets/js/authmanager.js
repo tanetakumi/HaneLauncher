@@ -16,7 +16,6 @@ const Microsoft     = require('./microsoft')
 const logger        = LoggerUtil('%c[AuthManager]', 'color: #a02d2a; font-weight: bold')
 const loggerSuccess = LoggerUtil('%c[AuthManager]', 'color: #209b07; font-weight: bold')
 
-// Functions
 async function validateSelectedMojang() {
     const current = ConfigManager.getSelectedAccount()
     const isValid = await Mojang.validate(current.accessToken, ConfigManager.getClientToken())
@@ -72,6 +71,9 @@ async function validateSelectedMicrosoft() {
     }
 }
 
+// Exports
+// Functions
+
 /**
  * Add an account. This will authenticate the given credentials with Mojang's
  * authserver. The resultant data will be stored as an auth account in the
@@ -99,7 +101,6 @@ exports.addAccount = async function(username, password){
         return Promise.reject(err)
     }
 }
-
 /**
  * Remove an account. This will invalidate the access token associated
  * with the account and then remove it from the database.
@@ -123,7 +124,6 @@ exports.removeAccount = async function(uuid){
         return Promise.reject(err)
     }
 }
-
 /**
  * Validate the selected account with Mojang's authserver. If the account is not valid,
  * we will attempt to refresh the access token and update that value. If that fails, a
@@ -135,16 +135,21 @@ exports.removeAccount = async function(uuid){
  * otherwise false.
  */
 exports.validateSelected = async function(){
-    try {
-        const account = ConfigManager.getSelectedAccount()
-        if (account.type === 'microsoft') {
-            return await validateSelectedMicrosoft()
-        } else {
-            return await validateSelectedMojang()
+    const current = ConfigManager.getSelectedAccount()
+    const isValid = await Mojang.validate(current.accessToken, ConfigManager.getClientToken())
+    if(!isValid){
+        try{
+            if (ConfigManager.getSelectedAccount() === 'microsoft') {
+                const validate = await validateSelectedMicrosoft()
+                return validate
+            } else {
+                const validate = await validateSelectedMojang()
+                return validate
+            }
+        } catch (error) {
+            return Promise.reject(error)
         }
-    } catch (error) {
-        return Promise.reject(error)
-    }
+    } else return true
 }
 
 exports.addMSAccount = async authCode => {

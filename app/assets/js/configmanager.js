@@ -340,6 +340,28 @@ exports.getAuthAccount = function(uuid){
 }
 
 /**
+ * Adds an authenticated mojang account to the database to be stored.
+ * 
+ * @param {string} uuid The uuid of the authenticated account.
+ * @param {string} accessToken The accessToken of the authenticated account.
+ * @param {string} username The username (usually email) of the authenticated account.
+ * @param {string} displayName The in game name of the authenticated account.
+ * 
+ * @returns {Object} The authenticated account object created by this action.
+ */
+ exports.addAuthAccount = function(uuid, accessToken, username, displayName){
+    config.selectedAccount = uuid
+    config.authenticationDatabase[uuid] = {
+        accessToken,
+        username: username.trim(),
+        uuid: uuid.trim(),
+        displayName: displayName.trim(),
+        type: 'mojang'
+    }
+    return config.authenticationDatabase[uuid]
+}
+
+/**
  * Adds an authenticated microsoft account to the database to be stored.
  * 
  * @param {string} uuid The uuid of the authenticated account.
@@ -352,7 +374,7 @@ exports.getAuthAccount = function(uuid){
  * 
  * @returns {Object} The authenticated account object created by this action.
  */
- exports.addMsAuthAccount = function(uuid, accessToken, name, mcExpires, msAccessToken, msRefreshToken, msExpires){
+exports.addMsAuthAccount = function(uuid, accessToken, name, mcExpires, msAccessToken, msRefreshToken, msExpires){
     config.selectedAccount = uuid
     config.authenticationDatabase[uuid] = {
         accessToken,
