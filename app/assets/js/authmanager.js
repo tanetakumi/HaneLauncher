@@ -101,6 +101,7 @@ exports.addAccount = async function(username, password){
         return Promise.reject(err)
     }
 }
+
 /**
  * Remove an account. This will invalidate the access token associated
  * with the account and then remove it from the database.
@@ -124,6 +125,7 @@ exports.removeAccount = async function(uuid){
         return Promise.reject(err)
     }
 }
+
 /**
  * Validate the selected account with Mojang's authserver. If the account is not valid,
  * we will attempt to refresh the access token and update that value. If that fails, a
@@ -159,7 +161,7 @@ exports.addMSAccount = async authCode => {
         const minecraftBuyed = await Microsoft.checkMCStore(MCAccessToken.access_token)
         if(!minecraftBuyed)
             return Promise.reject({
-                message: 'このアカウントにはMinecraftの購入履歴がないよ!  Minecraftを購入したアカウントでログインしてね!'
+                message: 'You didn\'t buy Minecraft! Please use another Microsoft account or buy Minecraft.'
             })
         const MCProfile = await Microsoft.getMCProfile(MCAccessToken.access_token)
         const ret = ConfigManager.addMsAuthAccount(MCProfile.id, MCAccessToken.access_token, MCProfile.name, MCAccessToken.expires_at, accessToken.access_token, accessToken.refresh_token)

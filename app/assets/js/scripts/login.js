@@ -18,6 +18,7 @@ const loginRememberOption   = document.getElementById('loginRememberOption')
 const loginButton           = document.getElementById('loginButton')
 const loginForm             = document.getElementById('loginForm')
 const loginMSButton         = document.getElementById('loginMSButton')
+
 // Control variables.
 let lu = false, lp = false
 
@@ -308,7 +309,7 @@ loginMSButton.addEventListener('click', (event) => {
 
 ipcRenderer.on('MSALoginWindowReply', (event, ...args) => {
     if (args[0] === 'error') {
-
+        
         loginMSButton.disabled = false
         loginLoading(false)
         switch (args[1]){
@@ -331,7 +332,7 @@ ipcRenderer.on('MSALoginWindowReply', (event, ...args) => {
                 return
             }
         }
-
+        
     }
     toggleOverlay(false, false, 'msOverlay')
     const queryMap = args[0]
@@ -381,7 +382,7 @@ ipcRenderer.on('MSALoginWindowReply', (event, ...args) => {
     }).catch(error => {
         loginMSButton.disabled = false
         loginLoading(false)
-        setOverlayContent('エラー', error.message ? error.message : 'Microsoftにログイン中にエラーが発生しました。 For more detailed information please check the log. You can open it with CTRL + SHIFT + I.', Lang.queryJS('login.tryAgain'))
+        setOverlayContent('ERROR', error.message ? error.message : 'An error occurred while logging in with Microsoft! For more detailed information please check the log. You can open it with CTRL + SHIFT + I.', Lang.queryJS('login.tryAgain'))
         setOverlayHandler(() => {
             formDisabled(false)
             toggleOverlay(false)

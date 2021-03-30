@@ -2,7 +2,7 @@
 const request = require('request')
 
 // Constants
-const clientId = '10d22137-03dc-4b6d-98f9-b21f04d2b31d'
+const clientId = 'fa51e325-2738-40e2-94c0-3184862696ef'
 
 const tokenUri = 'https://login.microsoftonline.com/consumers/oauth2/v2.0/token'
 const authXBLUri = 'https://user.auth.xboxlive.com/user/authenticate'
@@ -75,13 +75,13 @@ function getXSTSToken(XBLToken) {
                             message: 'Your Microsoft account is not connected to an Xbox account. Please create one.<br>'
                         })
                         return
-
+        
                     case 2148916238: 
                         reject({
                             message: 'Since you are not yet 18 years old, an adult must add you to a family in order for you to use Helios Launcher!'
                         })
                         return
-
+                
                 }
                 reject(response.body)
             }

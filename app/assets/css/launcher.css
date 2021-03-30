@@ -45,8 +45,8 @@ body, button {
     font-family: 'Avenir Book';
     color: white;
 }
-/*
-body {
+
+/*body {
     background: url('./../images/backgrounds/0.jpg') no-repeat center center fixed;
     background-size: cover;
 }*/
@@ -688,7 +688,21 @@ body {
     width: 16px;
     height: 16px;
 }
-
+.circle-loader-big {
+    margin:auto;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-left-color: #ffffff;
+    animation-name: loader-spin;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    position: relative;
+    display: block;
+    align-self: center;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
 .load-complete {
     animation: none;
     border-color: #ffffff;
@@ -876,6 +890,7 @@ body {
     text-shadow: 0px 0px 20px #fff;
     outline: none;
 }
+
 #loginMSButton:active {
     color: #c7c7c7;
     text-shadow:  0px 0px 20px #c7c7c7;
@@ -2878,7 +2893,7 @@ input:checked + .toggleSwitchSlider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 27px;
 }
 
 /* Divider bar between the external and internal icons. */
@@ -2892,31 +2907,52 @@ input:checked + .toggleSwitchSlider:before {
 /* Social media icon shared styles. */
 .mediaSVG {
     fill: #ffffff;
+    height: 12px;
     transition: 0.25s ease;
     cursor: pointer;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 25px;
 }
-
- 
 .mediaSVG:hover,
 .mediaURL:focus .mediaSVG,
 .mediaSVG:active {
     height: 20px;
-} 
+}
 
 /* Social media URL shared styles. */
 .mediaURL {
     outline: none;
 }
 
+/* Internal media button shared styles. */
+.mediaButton {
+    background: none;
+    border: none;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    outline: none;
+}
 
-/*-------------------------------------*/
-/* Settings tooltip styles. 
-.mediaContentsTooltip {
+#settingsMediaContainer {
+    position: relative;
+}
+
+/* Settings icon colors. */
+#settingsSVG {
+    stroke: #ffffff;
+    height: 15px;
+}
+.mediaButton:hover #settingsSVG,
+.mediaButton:focus #settingsSVG,
+.mediaButton:active #settingsSVG {
+    height: 23px;
+}
+
+/* Settings tooltip styles. */
+#settingsTooltip {
     visibility: hidden;
     opacity: 0;
-    bottom: 75%;
     width: 75px;
     height: 20px;
     background-color: rgba(0, 0, 0, 0.75);
@@ -2924,13 +2960,12 @@ input:checked + .toggleSwitchSlider:before {
     border-radius: 4px;
     position: absolute;
     z-index: 1;
-    right: 100%;
+    right: 130%;
     font-size: 12px;
-    color: #f00;
     line-height: 20px;
     transition: visibility 0s linear 0.25s, opacity 0.25s ease;
 }
-.mediaContentsTooltip::after{
+#settingsTooltip::after {
     content: " ";
     position: absolute;
     top: 50%;
@@ -2940,14 +2975,65 @@ input:checked + .toggleSwitchSlider:before {
     border-style: solid;
     border-color: transparent transparent transparent rgba(0, 0, 0, 0.75);
 }
-.mediaURL:hover .mediaContentsTooltip,
-.mediaURL:focus .mediaContentsTooltip,
-.mediaURL:active .mediaContentsTooltip {
+.mediaButton:hover #settingsTooltip,
+.mediaButton:focus #settingsTooltip,
+.mediaButton:active #settingsTooltip {
     visibility: visible;
     opacity: 1;
     transition-delay:0s;
-}*/
+}
 
+/* Twitter icon colors. */
+#twitterSVG:hover,
+#twitterURL:focus #twitterSVG {
+    fill: #1da1f2;
+}
+#twitterSVG:active {
+    fill: #1b8dd4;
+}
+
+/* Instagram icon colors. */
+#instagramSVG:hover,
+#instagramURL:focus #instagramSVG {
+    fill: url('#instaFill')
+    /*fill: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); */
+}
+#instagramSVG:active {
+    fill: url('#instaFill')
+}
+
+/* Youtube icon colors. */
+#youtubeSVG:hover,
+#youtubeURL:focus #youtubeSVG {
+    fill: #f00;
+}
+#youtubeSVG:active {
+    fill: #ea0202;
+}
+
+#youtubeSVG2:hover,
+#youtubeURL2:focus #youtubeSVG {
+    fill: #f00;
+}
+#youtubeSVG2:active {
+    fill: #ea0202;
+}
+
+#youtubeSVG3:hover,
+#youtubeURL3:focus #youtubeSVG {
+    fill: #f00;
+}
+#youtubeSVG3:active {
+    fill: #ea0202;
+}
+/* Discord icon colors. */
+#discordSVG:hover,
+#discordURL:focus #discordSVG {
+    fill: #7288d9;
+}
+#discordSVG:active {
+    fill: #657ac4;
+}
 /* マウスオンする要素とツールチップを横並びにする */
 .mediaURL {
     display: inline-block;
@@ -3015,109 +3101,6 @@ input:checked + .toggleSwitchSlider:before {
 /*-------------------------------------*/
 
 
-
-/* Internal media button shared styles. */
-.mediaButton {
-    background: none;
-    border: none;
-    padding: 0px;
-    display: flex;
-    align-items: center;
-    outline: none;
-}
-
-#settingsMediaContainer {
-    position: relative;
-}
-
-/* Settings icon colors. */
-#settingsSVG {
-    stroke: #e5ff52;
-    /*height: 30px;*/
-    height: 30px;
-}
-.mediaButton:hover #settingsSVG,
-.mediaButton:focus #settingsSVG,
-.mediaButton:active #settingsSVG {
-    height: 23px;
-}
-
-/* Settings tooltip styles. */
-#settingsTooltip {
-    visibility: hidden;
-    opacity: 0;
-    width: 75px;
-    height: 20px;
-    background-color: rgba(0, 0, 0, 0.75);
-    text-align: center;
-    border-radius: 4px;
-    position: absolute;
-    z-index: 1;
-    right: 130%;
-    font-size: 12px;
-    line-height: 20px;
-    transition: visibility 0s linear 0.25s, opacity 0.25s ease;
-}
-#settingsTooltip::after {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent transparent rgba(0, 0, 0, 0.75);
-}
-.mediaButton:hover #settingsTooltip,
-.mediaButton:focus #settingsTooltip,
-.mediaButton:active #settingsTooltip {
-    visibility: visible;
-    opacity: 1;
-    transition-delay:0s;
-}
-
-/* Twitter icon colors. */
-#twitterSVG:hover,
-#twitterURL:focus #twitterSVG {
-    fill: #1da1f2;
-}
-#twitterSVG:active {
-    fill: #1b8dd4;
-}
-
-/* Instagram icon colors. */
-#instagramSVG:hover,
-#instagramURL:focus #instagramSVG {
-    fill: url('#instaFill')
-    /*fill: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); */
-}
-#instagramSVG:active {
-    fill: url('#instaFill')
-}
-
-/* Youtube icon colors. */
-#youtubeSVG:hover,
-#youtubeURL:focus #youtubeSVG,
-#youtubeSVG2:hover,
-#youtubeURL:focus #youtubeSVG2,
-#youtubeSVG3:hover,
-#youtubeURL:focus #youtubeSVG3 {
-    fill: #f00;
-}
-#youtubeSVG:active,
-#youtubeSVG2:active,
-#youtubeSVG3:active {
-    fill: #ea0202;
-}
-/* Discord icon colors. */
-#discordSVG:hover,
-#discordURL:focus #discordSVG {
-    fill: #7288d9;
-}
-#discordSVG:active {
-    fill: #657ac4;
-}
-
 /*******************************************************************************
  *                                                                             *
  * Landing View (Bottom Styles)                                                *
@@ -3136,7 +3119,7 @@ input:checked + .toggleSwitchSlider:before {
 .bot_divider {
     height: 25px;
     width: 2px;
-    background: rgba(202, 204, 63, 0.7);
+    background: rgba(238, 255, 0, 0.7);
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -3148,16 +3131,15 @@ input:checked + .toggleSwitchSlider:before {
 /* Maintains maximum width on the status bar. */
 #server_status_wrapper {
     display: inline-flex;
-    width: 100px;
-    /*width: 75px;*/
+    width: 90px;
 }
 
 /* Span which displays the player count of the selected server. */
 #player_count {
-    color: #00e1ff;
+    color: #00d9ff;
     font-size: 12px;
     font-weight: 900;
-    text-shadow: 0px 0px 20px #000000;
+    text-shadow: 0px 0px 20px #00d9ff;
     margin-left: 10px;
 }
 
@@ -3237,7 +3219,7 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Non essential service title text. */
 #mojangStatusNETitle {
-    font-size: 12px;
+    font-size: 10px;
     padding: 0px 3px;
     text-align: center;
     letter-spacing: 1px;
@@ -3251,7 +3233,7 @@ input:checked + .toggleSwitchSlider:before {
 /* Displays the name of the mojang service. */
 .mojangStatusName {
     width: 100%;
-    font-size: 12px;
+    font-size: 10px;
     letter-spacing: 1px;
     line-height: 12px;
     padding: 6px 0px;
@@ -3346,9 +3328,9 @@ input:checked + .toggleSwitchSlider:before {
     cursor: pointer;
     font-weight: 900;
     letter-spacing: 2px;
-    text-shadow: 0px 0px 0px #ffffff;
+    text-shadow: 0px 0px 0px #ff5500;
+    color: rgb(255, 145, 0);
     font-size: 20px;
-    color: #fd7f45;
     padding: 0px;
     transition: 0.25s ease;
     outline: none;
@@ -3358,11 +3340,11 @@ input:checked + .toggleSwitchSlider:before {
     text-shadow: 0px 0px 20px #fff, 0px 0px 20px #fff;
 }
 #launch_button:active {
-    color: #fd7f45;
+    color: #c7c7c7;
     text-shadow: 0px 0px 20px #c7c7c7, 0px 0px 20px #c7c7c7;
 }
 #launch_button:disabled {
-    color: #ff631b;
+    color: #c7c7c7;
     cursor: default;
     pointer-events: none;
 }

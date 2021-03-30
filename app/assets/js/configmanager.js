@@ -9,7 +9,7 @@ const sysRoot = process.env.APPDATA || (process.platform == 'darwin' ? process.e
 const dataPath = path.join(sysRoot, '.helioslauncher')
 
 // Forked processes do not have access to electron, so we have this workaround.
-const launcherDir = process.env.CONFIG_DIRECT_PATH || require('@electron/remote').app.getPath('userData')
+const launcherDir = process.env.CONFIG_DIRECT_PATH || require('electron').remote.app.getPath('userData')
 
 /**
  * Retrieve the absolute path of the launcher directory.
@@ -319,6 +319,19 @@ exports.getAuthAccount = function(uuid){
 }
 
 /**
+ * Update the access token of an authenticated account.
+ * 
+ * @param {string} uuid The uuid of the authenticated account.
+ * @param {string} accessToken The new Access Token.
+ * 
+ * @returns {Object} The authenticated account object created by this action.
+ */
+exports.updateAuthAccount = function(uuid, accessToken){
+    config.authenticationDatabase[uuid].accessToken = accessToken
+    return config.authenticationDatabase[uuid]
+}
+
+/**
  * Update the tokens of an authenticated microsoft account.
  * 
  * @param {string} uuid The uuid of the authenticated account.
@@ -330,7 +343,7 @@ exports.getAuthAccount = function(uuid){
  * 
  * @returns {Object} The authenticated account object created by this action.
  */
- exports.updateAuthAccount = function(uuid, accessToken, msAccessToken, msRefreshToken, msExpires, mcExpires){
+exports.updateAuthAccount = function(uuid, accessToken, msAccessToken, msRefreshToken, msExpires, mcExpires){
     config.authenticationDatabase[uuid].accessToken = accessToken
     config.authenticationDatabase[uuid].expiresAt = mcExpires
     config.authenticationDatabase[uuid].microsoft.access_token = msAccessToken
@@ -349,7 +362,7 @@ exports.getAuthAccount = function(uuid){
  * 
  * @returns {Object} The authenticated account object created by this action.
  */
- exports.addAuthAccount = function(uuid, accessToken, username, displayName){
+exports.addAuthAccount = function(uuid, accessToken, username, displayName){
     config.selectedAccount = uuid
     config.authenticationDatabase[uuid] = {
         accessToken,

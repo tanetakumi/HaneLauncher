@@ -1,33 +1,31 @@
-require('@electron/remote/main').initialize()
-
 // Requirements
 const { app, BrowserWindow, ipcMain, Menu } = require('electron')
-const autoUpdater                   = require('electron-updater').autoUpdater
-const ejse                          = require('ejs-electron')
-const fs                            = require('fs')
-const isDev                         = require('./app/assets/js/isdev')
-const path                          = require('path')
-const semver                        = require('semver')
-const url                           = require('url')
+const autoUpdater = require('electron-updater').autoUpdater
+const ejse = require('ejs-electron')
+const fs = require('fs')
+const isDev = require('./app/assets/js/isdev')
+const path = require('path')
+const semver = require('semver')
+const url = require('url')
 
 const redirectUriPrefix = 'https://login.microsoftonline.com/common/oauth2/nativeclient?'
-const clientID = 'client id here'
+const clientID = 'fa51e325-2738-40e2-94c0-3184862696ef'
 
 // Setup auto updater.
 function initAutoUpdater(event, data) {
 
-    if(data){
+    if (data) {
         autoUpdater.allowPrerelease = true
     } else {
         // Defaults to true if application version contains prerelease components (e.g. 0.12.1-alpha.1)
         // autoUpdater.allowPrerelease = true
     }
-    
-    if(isDev){
+
+    if (isDev) {
         autoUpdater.autoInstallOnAppQuit = false
         autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml')
     }
-    if(process.platform === 'darwin'){
+    if (process.platform === 'darwin') {
         autoUpdater.autoDownload = false
     }
     autoUpdater.on('update-available', (info) => {
@@ -44,12 +42,12 @@ function initAutoUpdater(event, data) {
     })
     autoUpdater.on('error', (err) => {
         event.sender.send('autoUpdateNotification', 'realerror', err)
-    }) 
+    })
 }
 
 // Open channel to listen for update actions.
 ipcMain.on('autoUpdateAction', (event, arg, data) => {
-    switch(arg){
+    switch (arg) {
         case 'initAutoUpdater':
             console.log('Initializing auto updater.')
             initAutoUpdater(event, data)
@@ -62,9 +60,9 @@ ipcMain.on('autoUpdateAction', (event, arg, data) => {
                 })
             break
         case 'allowPrereleaseChange':
-            if(!data){
+            if (!data) {
                 const preRelComp = semver.prerelease(app.getVersion())
-                if(preRelComp != null && preRelComp.length > 0){
+                if (preRelComp != null && preRelComp.length > 0) {
                     autoUpdater.allowPrerelease = true
                 } else {
                     autoUpdater.allowPrerelease = data
@@ -135,7 +133,7 @@ ipcMain.on('openMSALoginWindow', (ipcEvent, args) => {
     })
 
     MSALoginWindow.removeMenu()
-    MSALoginWindow.loadURL('https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?prompt=select_account&client_id=' + '10d22137-03dc-4b6d-98f9-b21f04d2b31d' + '&response_type=code&scope=XboxLive.signin%20offline_access&redirect_uri=https://login.microsoftonline.com/common/oauth2/nativeclient')
+    MSALoginWindow.loadURL('https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?prompt=select_account&client_id=' + clientID + '&response_type=code&scope=XboxLive.signin%20offline_access&redirect_uri=https://login.microsoftonline.com/common/oauth2/nativeclient')
 })
 
 let MSALogoutWindow = null
@@ -206,8 +204,8 @@ function createWindow() {
 }
 
 function createMenu() {
-    
-    if(process.platform === 'darwin') {
+
+    if (process.platform === 'darwin') {
 
         // Extend default included application menu to continue support for quit keyboard shortcut
         let applicationSubMenu = {
@@ -269,9 +267,9 @@ function createMenu() {
 
 }
 
-function getPlatformIcon(filename){
+function getPlatformIcon(filename) {
     let ext
-    switch(process.platform) {
+    switch (process.platform) {
         case 'win32':
             ext = 'ico'
             break
