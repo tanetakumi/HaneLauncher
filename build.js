@@ -20,7 +20,7 @@ builder.build({
     config: {
         appId: 'hanelauncher',
         productName: 'はね鯖',
-        artifactName: '${productName}-setup-${version}.${ext}',
+        artifactName: 'HaneLauncher-setup-${version}.${ext}',
         copyright: 'Copyright © 2018-2020 Daniel Scalzi',
         directories: {
             buildResources: 'build',

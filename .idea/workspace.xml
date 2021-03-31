@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d5c5351-6eea-4fc5-b408-096e2b0d392b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/assets/js/authmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/js/authmanager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/js/configmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/js/configmanager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/js/microsoft.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/js/microsoft.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/js/scripts/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/js/scripts/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/js/scripts/overlay.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/js/scripts/overlay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/landing.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/app/landing.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/app/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.js" beforeDir="false" afterPath="$PROJECT_DIR$/build.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/icon.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
