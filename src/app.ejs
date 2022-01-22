@@ -38,13 +38,20 @@
     <div id="loadingContainer">
         <div id="loadingContent">
             <div id="loadSpinnerContainer">
-                <img id="loadCenterImage" src="images/LoadingText.svg">
-                <img id="loadSpinnerImage" class="rotating" src="images/LoadingSeal.svg">
-                <img id="loadSpinnerImageBack" class="rotatingBack" src="images/LoadingBack.svg">
+                <img id="loadCenterImage" src="images/LoadingText.png">
+                <img id="loadSpinnerImage" class="rotating" src="images/LoadingSeal.png">
             </div>
         </div>
     </div>
     <script src="js/app.js"></script>
+    <!--script>
+        
+        function clock() {
+            const rnd = (Math.floor(Math.random() * 10) % 6) + 1
+            document.querySelector('body').style.backgroundImage = `url(images/backgrounds/${rund}.jpg)`
+        }
+        setInterval('clock()',5000);
+    </script-->
 </body>
 </html>
 

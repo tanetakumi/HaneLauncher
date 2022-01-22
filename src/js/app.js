@@ -1,4 +1,5 @@
 // 背景画像をメインプロセスに言われるがままに変更
-window.api.on('bgimage', (event, number)=>{
-    document.querySelector('body').style.backgroundImage = `url(images/backgrounds/${number}.jpg)`
+window.api.on('bgimage', (event, file)=>{
+    //document.querySelector('body').style.backgroundImage = `url(images/backgrounds/${rnd}.jpg)`
+    document.querySelector('body').style.backgroundImage = `url(${file})`
 });

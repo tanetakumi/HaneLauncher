@@ -1,19 +1,24 @@
 {
-  "name": "firstnodeapp",
+  "name": "hanelauncher",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fork of HeliosLauncher",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build-mac": "electron-builder --mac --x64",
-    "build-win": "electron-builder --win --x64"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanetakumi/HaneLauncher.git"
+  },
   "author": "tanetakumi",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanetakumi/HaneLauncher/issues"
+  },
+  "homepage": "https://github.com/tanetakumi/HaneLauncher#readme",
   "dependencies": {
     "ejs-electron": "^2.1.1",
-    "electron": "^16.0.5"
+    "electron": "^16.0.7"
   }
 }

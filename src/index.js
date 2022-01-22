@@ -1,6 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
-const ejse          = require('ejs-electron')
+const ejse = require('ejs-electron')
+const fs = require('fs');
+const { Console } = require('console');
+
+
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -21,16 +25,21 @@ function createWindow () {
   win.removeMenu()
 
   win.loadURL(`file://${__dirname}/app.ejs`)
+
+  // ファイル名の一覧
+  const filenames = fs.readdirSync(path.join(__dirname, 'images', 'backgrounds'));
+  console.log(filenames)
   
   // 1秒置きに背景画像を変更
   setInterval(()=>{
-    const rnd = (Math.floor(Math.random() * 10) % 8) + 1
-    win.webContents.send('bgimage', rnd)
+    const filenames = fs.readdirSync(path.join(__dirname, 'images', 'backgrounds'));
+    const rnd = (Math.floor(Math.random() * 10) % filenames.length)
+
+    win.webContents.send('bgimage', 'images/backgrounds/'+filenames[rnd]);
   }, 5000)
 
   win.on('close', () => console.log('BrowserWindow.close'))
   win.on('closed', () => console.log('BrowserWindow.closed'))
-
 
 }
 
