@@ -1,0 +1,50 @@
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" http-equiv="Content-Security-Policy" content="script-src 'self' 'sha256-In6B8teKZQll5heMl9bS7CESTbGvuAt3VVV86BUQBDk='"/>
+    <title>HaneLauncher</title>
+    <!--script src="./assets/js/scripts/uicore.js"></script-->
+    <!--script src="./assets/js/scripts/uibinder.js"></script-->
+    <link type="text/css" rel="stylesheet" href="css/launcher.css">
+    <style>
+        body {
+            background-image: url('images/backgrounds/0.jpg');
+            background-size: cover;
+            user-select: none;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        #main {
+            display: none;
+            height: calc(100% - 22px);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.65) 100%);
+            width: 100%;
+            position: absolute;
+            z-index: 10;
+        }
+        #main[overlay] {
+            filter: blur(3px) contrast(0.9) brightness(1.0);
+        }
+    </style>
+</head>
+<body>
+    <%- include('frame') %>
+    <div id="main">
+        <!--%- include('welcome') %-->
+        <!--%- include('login') %-->
+        <!--%- include('settings') %-->
+        <!--%- include('landing') %-->
+    </div>
+    <!--%- include('overlay') %-->
+    <div id="loadingContainer">
+        <div id="loadingContent">
+            <div id="loadSpinnerContainer">
+                <img id="loadCenterImage" src="images/LoadingText.svg">
+                <img id="loadSpinnerImage" class="rotating" src="images/LoadingSeal.svg">
+                <img id="loadSpinnerImageBack" class="rotatingBack" src="images/LoadingBack.svg">
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
