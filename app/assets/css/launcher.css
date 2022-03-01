@@ -371,7 +371,7 @@ body, button {
 
 /* Styles for dimmer login span. */
 .loginSpanDim {
-    font-size: 12px;
+    font-size: 14px;
     color: #848484;
     font-weight: bold;
 }
@@ -3181,7 +3181,7 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Style for a general label on the bottom of the landing view. */
 .bot_label {
-    font-size: 9px;
+    /*font-size: 9px;*/
     letter-spacing: 1px;
     font-weight: bold;
     text-shadow: 0px 0px 0px #bebcbb;
@@ -3203,12 +3203,12 @@ input:checked + .toggleSwitchSlider:before {
 /* Maintains maximum width on the status bar. */
 #server_status_wrapper {
     display: inline-flex;
-    width: 75px;
+    /*width: 75px;*/
 }
 
 /* Span which displays the player count of the selected server. */
 #player_count {
-    color: #949494;
+    color: #ff1919;
     font-size: 8px;
     font-weight: 900;
     text-shadow: 0px 0px 20px #949494;
