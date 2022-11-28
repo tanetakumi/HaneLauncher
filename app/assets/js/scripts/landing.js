@@ -1092,7 +1092,7 @@ function loadNews(){
     return new Promise((resolve, reject) => {
         const distroData = DistroManager.getDistribution()
         const newsFeed = distroData.getRSS()
-        const newsHost = new URL(newsFeed).origin + '/'
+        const newsHost = new URL(newsFeed).origin
         $.ajax({
             url: newsFeed,
             success: (data) => {
@@ -1104,7 +1104,7 @@ function loadNews(){
                     const el = $(items[i])
 
                     // Resolve date.
-                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('ja-JP', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
 
                     // Resolve comments.
                     let comments = el.find('slash\\:comments').text() || '0'
