@@ -145,13 +145,13 @@
                         
                     </div>
                 </div>
-                <div id="settingsDropinModsContainer">
+                <!-- <div id="settingsDropinModsContainer">
                     <div class="settingsModsHeader">Drop-in Mods</div>
                     <button id="settingsDropinFileSystemButton">+ Add Mods <span id="settingsDropinRefreshNote">(F5 to Refresh)</span></button>
                     <div id="settingsDropinModsContent">
                         
                     </div>
-                </div>
+                </div> -->
                 <div id="settingsShadersContainer">
                     <div class="settingsModsHeader">シェーダーパック</div>
                     <div id="settingsShaderpackDesc">シェーダーの有効・無効を設定します。シェーダーは強力なセットアップでないとスムーズに動きませんのでご注意ください。カスタムパックを追加することができます。</div>
@@ -223,7 +223,7 @@
                 </div>
             </div>
             <div class="settingsFileSelContainer">
-                <div class="settingsFileSelTitle">Java Executable</div>
+                <div class="settingsFileSelTitle">Java実行ファイル</div>
                 <div class="settingsFileSelContent">
                     <div id="settingsJavaExecDetails">Selected: Java 8 Update 172 (x64)</div>
                     <div class="settingsFileSelActions">
@@ -242,10 +242,10 @@
                             </svg>
                         </div>
                         <input class="settingsFileSelVal" id="settingsJavaExecVal" type="text" value="null" cValue="JavaExecutable" serverDependent disabled>
-                        <button class="settingsFileSelButton" id="settingsJavaExecSel" dialogTitle="Select Java Executable" dialogDirectory="false">Choose File</button>
+                        <button class="settingsFileSelButton" id="settingsJavaExecSel" dialogTitle="Select Java Executable" dialogDirectory="false">ファイルを選択</button>
                     </div>
                 </div>
-                <div class="settingsFileSelDesc">The Java executable is validated before game launch. <strong id="settingsJavaReqDesc">Requires Java 8 x64.</strong><br>The path should end with <strong>bin<%= process.platform === 'win32' ? '\\javaw.exe' : '/java' %></strong>.</div>
+                <div class="settingsFileSelDesc">Java実行ファイルは、ゲーム起動前に検証されます。<strong id="settingsJavaReqDesc">Java 8 x64が必要です。</strong><br>The path should end with <strong>bin<%= process.platform === 'win32' ? '\\javaw.exe' : '/java' %></strong>.</div>
             </div>
             <div id="settingsJVMOptsContainer">
                 <div id="settingsJVMOptsTitle">JVMの追加オプション</div>
