@@ -325,7 +325,7 @@ function fullSettingsSave() {
     saveSettingsValues()
     saveModConfiguration()
     ConfigManager.save()
-    //saveDropinModConfiguration()
+    saveDropinModConfiguration()
     saveShaderpackSettings()
 }
 
@@ -982,9 +982,9 @@ document.addEventListener('keydown', (e) => {
 })
 
 function reloadDropinMods(){
-    // resolveDropinModsForUI()
-    // bindDropinModsRemoveButton()
-    // bindDropinModFileSystemButton()
+    resolveDropinModsForUI()
+    bindDropinModsRemoveButton()
+    bindDropinModFileSystemButton()
     bindModsToggleSwitch()
 }
 
@@ -1134,10 +1134,10 @@ function animateSettingsTabRefresh(){
  */
 function prepareModsTab(first){
     resolveModsForUI()
-    //resolveDropinModsForUI()
+    resolveDropinModsForUI()
     resolveShaderpacksForUI()
-    //bindDropinModsRemoveButton()
-    //bindDropinModFileSystemButton()
+    bindDropinModsRemoveButton()
+    bindDropinModFileSystemButton()
     bindShaderpackButton()
     bindModsToggleSwitch()
     loadSelectedServerOnModsTab()
@@ -1475,7 +1475,7 @@ function populateReleaseNotes(){
         },
         timeout: 2500
     }).catch(err => {
-        settingsAboutChangelogText.innerHTML = 'リリースノートの読み込みに失敗しました。'
+        settingsAboutChangelogText.innerHTML = 'Failed to load release notes.'
     })
 }
 
@@ -1530,20 +1530,20 @@ function populateSettingsUpdateInformation(data){
         populateVersionInformation(data.version, settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
         
         if(process.platform === 'darwin'){
-            settingsUpdateButtonStatus('Download from GitHub<span style="font-size: 10px;color: gray;text-shadow: none !important;">ランチャーを閉じて、dmgを実行してアップデートしてください。</span>', false, () => {
+            settingsUpdateButtonStatus('Download from GitHub<span style="font-size: 10px;color: gray;text-shadow: none !important;">Close the launcher and run the dmg to update.</span>', false, () => {
                 shell.openExternal(data.darwindownload)
             })
         } else {
-            settingsUpdateButtonStatus('ダウンロード中..', true)
+            settingsUpdateButtonStatus('Downloading..', true)
         }
     } else {
-        settingsUpdateTitle.innerHTML = '最新バージョンを使用しています。'
+        settingsUpdateTitle.innerHTML = 'You Are Running the Latest Version'
         settingsUpdateChangelogCont.style.display = 'none'
         populateVersionInformation(remote.app.getVersion(), settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
-        settingsUpdateButtonStatus('アップデートの確認', false, () => {
+        settingsUpdateButtonStatus('Check for Updates', false, () => {
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
-                settingsUpdateButtonStatus('アップデートの確認しています..', true)
+                settingsUpdateButtonStatus('Checking for Updates..', true)
             }
         })
     }
