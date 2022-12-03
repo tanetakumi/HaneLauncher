@@ -371,7 +371,7 @@ body, button {
 
 /* Styles for dimmer login span. */
 .loginSpanDim {
-    font-size: 14px;
+    font-size: 12px;
     color: #848484;
     font-weight: bold;
 }
@@ -2482,7 +2482,7 @@ input:checked + .toggleSwitchSlider:before {
 #landingContainer > #lower {
     height: 23%;
     display: flex;
-    /*background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));*/
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 #landingContainer > #lower > #left {
     position: relative;
@@ -3181,7 +3181,7 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Style for a general label on the bottom of the landing view. */
 .bot_label {
-    /*font-size: 9px;*/
+    font-size: 12px;
     letter-spacing: 1px;
     font-weight: bold;
     text-shadow: 0px 0px 0px #bebcbb;
@@ -3190,7 +3190,7 @@ input:checked + .toggleSwitchSlider:before {
 /* Divider used on the bottom of the landing view. */
 .bot_divider {
     height: 25px;
-    width: 2px;
+    width: 0px;
     background: rgba(107, 105, 105, 0.7);
     margin-left: 20px;
     margin-right: 20px;
@@ -3203,13 +3203,14 @@ input:checked + .toggleSwitchSlider:before {
 /* Maintains maximum width on the status bar. */
 #server_status_wrapper {
     display: inline-flex;
-    /*width: 75px;*/
+    width: 75px;
+    margin-right: 5px;
 }
 
 /* Span which displays the player count of the selected server. */
 #player_count {
-    color: #ff1919;
-    font-size: 8px;
+    color: #949494;
+    font-size: 12px;
     font-weight: 900;
     text-shadow: 0px 0px 20px #949494;
     margin-left: 10px;
@@ -3942,6 +3943,7 @@ input:checked + .toggleSwitchSlider:before {
     position: absolute;
     width: 277px;
     height: auto;
+    z-index: 500;
 }
 
 /* Rotating image for the spinner. */

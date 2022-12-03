@@ -1475,7 +1475,7 @@ function populateReleaseNotes(){
         },
         timeout: 2500
     }).catch(err => {
-        settingsAboutChangelogText.innerHTML = 'Failed to load release notes.'
+        settingsAboutChangelogText.innerHTML = 'リリースノートの読み込みに失敗しました。'
     })
 }
 
@@ -1523,27 +1523,27 @@ function settingsUpdateButtonStatus(text, disabled = false, handler = null){
  */
 function populateSettingsUpdateInformation(data){
     if(data != null){
-        settingsUpdateTitle.innerHTML = `New ${isPrerelease(data.version) ? 'Pre-release' : 'Release'} Available`
+        settingsUpdateTitle.innerHTML = `${isPrerelease(data.version) ? 'プレリリース' : 'リリース'} が利用可能です。`
         settingsUpdateChangelogCont.style.display = null
         settingsUpdateChangelogTitle.innerHTML = data.releaseName
         settingsUpdateChangelogText.innerHTML = data.releaseNotes
         populateVersionInformation(data.version, settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
         
         if(process.platform === 'darwin'){
-            settingsUpdateButtonStatus('Download from GitHub<span style="font-size: 10px;color: gray;text-shadow: none !important;">Close the launcher and run the dmg to update.</span>', false, () => {
+            settingsUpdateButtonStatus('GitHubからダウンロードします。<span style="font-size: 10px;color: gray;text-shadow: none !important;">ランチャーを終了し、dmgを実行してアップデートしてください。</span>', false, () => {
                 shell.openExternal(data.darwindownload)
             })
         } else {
-            settingsUpdateButtonStatus('Downloading..', true)
+            settingsUpdateButtonStatus('ダウンロード中..', true)
         }
     } else {
-        settingsUpdateTitle.innerHTML = 'You Are Running the Latest Version'
+        settingsUpdateTitle.innerHTML = '最新のバージョンを使用しています。'
         settingsUpdateChangelogCont.style.display = 'none'
         populateVersionInformation(remote.app.getVersion(), settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
-        settingsUpdateButtonStatus('Check for Updates', false, () => {
+        settingsUpdateButtonStatus('アップデートの確認', false, () => {
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
-                settingsUpdateButtonStatus('Checking for Updates..', true)
+                settingsUpdateButtonStatus('アップデートの確認中..', true)
             }
         })
     }
