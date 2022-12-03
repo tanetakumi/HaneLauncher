@@ -1,7 +1,7 @@
 {
   "name": "hanelauncher",
-  "version": "1.9.0",
-  "productName": "Hane Launcher",
+  "version": "1.9.1",
+  "productName": "HaneLauncher",
   "description": "Modded Minecraft Launcher",
   "author": "Daniel Scalzi (https://github.com/dscalzi/) and tanetakumi",
   "license": "UNLICENSED",
@@ -43,9 +43,9 @@
     "winreg": "^1.2.4"
   },
   "devDependencies": {
-    "electron": "^21.2.2",
+    "electron": "^21.3.1",
     "electron-builder": "^23.6.0",
-    "eslint": "^8.27.0"
+    "eslint": "^8.28.0"
   },
   "repository": {
     "type": "git",

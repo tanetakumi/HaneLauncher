@@ -2,7 +2,7 @@
 const os     = require('os')
 const semver = require('semver')
 
-const { JavaGuard, Util } = require('./assets/js/assetguard')
+const { JavaGuard } = require('./assets/js/assetguard')
 const DropinModUtil  = require('./assets/js/dropinmodutil')
 const { MSFT_OPCODE, MSFT_REPLY_TYPE, MSFT_ERROR } = require('./assets/js/ipcconstants')
 
@@ -138,8 +138,8 @@ function initSettingsValues(){
                 if(v.type === 'number' || v.type === 'text'){
                     // Special Conditions
                     if(cVal === 'JavaExecutable'){
-                        populateJavaExecDetails(v.value)
                         v.value = gFn.apply(null, gFnOpts)
+                        populateJavaExecDetails(v.value)
                     } else if (cVal === 'DataDirectory'){
                         v.value = gFn.apply(null, gFnOpts)
                     } else if(cVal === 'JVMOptions'){
@@ -1156,6 +1156,7 @@ const settingsMemoryTotal     = document.getElementById('settingsMemoryTotal')
 const settingsMemoryAvail     = document.getElementById('settingsMemoryAvail')
 const settingsJavaExecDetails = document.getElementById('settingsJavaExecDetails')
 const settingsJavaReqDesc     = document.getElementById('settingsJavaReqDesc')
+const settingsJvmOptsLink     = document.getElementById('settingsJvmOptsLink')
 
 // Store maximum memory values.
 const SETTINGS_MAX_MEMORY = ConfigManager.getAbsoluteMaxRAM()
@@ -1370,7 +1371,17 @@ function populateJavaReqDesc() {
     } else {
         settingsJavaReqDesc.innerHTML = 'Requires Java 8 x64.'
     }
-    
+}
+
+function populateJvmOptsLink() {
+    const mcVer = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()).getMinecraftVersion()
+    if(Util.mcVersionAtLeast('1.17', mcVer)) {
+        settingsJvmOptsLink.innerHTML = 'Available Options for Java 17 (HotSpot VM)'
+        settingsJvmOptsLink.href = 'https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#extra-options-for-java'
+    } else {
+        settingsJvmOptsLink.innerHTML = 'Available Options for Java 8 (HotSpot VM)'
+        settingsJvmOptsLink.href = `https://docs.oracle.com/javase/8/docs/technotes/tools/${process.platform === 'win32' ? 'windows' : 'unix'}/java.html`
+    }
 }
 
 /**
@@ -1380,7 +1391,7 @@ function prepareJavaTab(){
     bindRangeSlider()
     populateMemoryStatus()
     populateJavaReqDesc()
-    populateJavaExecDetails()
+    populateJvmOptsLink()
 }
 
 /**
@@ -1464,7 +1475,7 @@ function populateReleaseNotes(){
         },
         timeout: 2500
     }).catch(err => {
-        settingsAboutChangelogText.innerHTML = 'Failed to load release notes.'
+        settingsAboutChangelogText.innerHTML = 'リリースノートの読み込みに失敗しました。'
     })
 }
 
@@ -1512,27 +1523,27 @@ function settingsUpdateButtonStatus(text, disabled = false, handler = null){
  */
 function populateSettingsUpdateInformation(data){
     if(data != null){
-        settingsUpdateTitle.innerHTML = `New ${isPrerelease(data.version) ? 'Pre-release' : 'Release'} Available`
+        settingsUpdateTitle.innerHTML = `${isPrerelease(data.version) ? 'プレリリース' : 'リリース'} が利用可能です。`
         settingsUpdateChangelogCont.style.display = null
         settingsUpdateChangelogTitle.innerHTML = data.releaseName
         settingsUpdateChangelogText.innerHTML = data.releaseNotes
         populateVersionInformation(data.version, settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
         
         if(process.platform === 'darwin'){
-            settingsUpdateButtonStatus('Download from GitHub<span style="font-size: 10px;color: gray;text-shadow: none !important;">Close the launcher and run the dmg to update.</span>', false, () => {
+            settingsUpdateButtonStatus('GitHubからダウンロードします。<span style="font-size: 10px;color: gray;text-shadow: none !important;">ランチャーを終了し、dmgを実行してアップデートしてください。</span>', false, () => {
                 shell.openExternal(data.darwindownload)
             })
         } else {
-            settingsUpdateButtonStatus('Downloading..', true)
+            settingsUpdateButtonStatus('ダウンロード中..', true)
         }
     } else {
-        settingsUpdateTitle.innerHTML = 'You Are Running the Latest Version'
+        settingsUpdateTitle.innerHTML = '最新のバージョンを使用しています。'
         settingsUpdateChangelogCont.style.display = 'none'
         populateVersionInformation(remote.app.getVersion(), settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
-        settingsUpdateButtonStatus('Check for Updates', false, () => {
+        settingsUpdateButtonStatus('アップデートの確認', false, () => {
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
-                settingsUpdateButtonStatus('Checking for Updates..', true)
+                settingsUpdateButtonStatus('アップデートの確認中..', true)
             }
         })
     }
